@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detailed Page
+{% endblock %}
+
+{% block container %}
+<form method="post" class="row justify-content-center">
+    {{ form.hidden_tag() }}
+    <img src="/static/images/{{product['img']}}" style="width: 40%;">
+    <h4>Name: {{ product["name"] }} </h4>
+    <h3>Price: {{ product['price'] }} ₾</h3>
+    <hr>
+    <div class="row mt-2">
+        {{ form.text(class="form-control", placeholder=form.text.label.text) }}
+    </div>
+    <div class="row mt-2 mb-2" style="width: 20%;">
+        {{ form.submit(class="btn btn-success") }}
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            {% for comment in comments %}
+            {{ comment.text }}<br>
+            {% endfor %}
+        </div>
+    </div>
+    {{ comments.text }}
+</form>
+{% endblock %}
